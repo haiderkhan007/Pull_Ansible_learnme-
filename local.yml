@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  connections: local
+- hosts: 192.168.2.15
   become: true
   tasks:
 
