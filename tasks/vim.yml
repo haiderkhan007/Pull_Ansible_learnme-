@@ -1,0 +1,12 @@
+- name: installing vim on ubuntu
+  apt: 
+    name: vim
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: installing vim on fedora
+  dnf:
+    name: vim
+    state: latest
+  when: ansible_distribution == "Fedora"
+  

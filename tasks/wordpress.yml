@@ -1,0 +1,8 @@
+- name: installing wordpress on ubuntu
+  package:
+    name: wordpress
+    state: absent
+  
+   
+
+ 

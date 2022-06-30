@@ -1,0 +1,13 @@
+- name: installing apache on ubuntu 
+  tags: apache,apache2,ubuntu
+  apt:
+    name: apache2
+    state: absent
+  when: ansible_distribution == "Ubuntu"
+
+- name: installing apache on fedora
+  tags: apache,httpd,fedora
+  dnf:
+    name: httpd
+    state: absent
+  when: ansible_distribution == "Fedora"

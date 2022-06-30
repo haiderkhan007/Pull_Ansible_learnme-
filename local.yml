@@ -1,8 +1,27 @@
 ---
-- hosts: 192.168.2.15
+- hosts: all
   become: true
-  tasks:
+  pre_tasks:
 
-  - name: install htop
+ 
+
+  - name: installing updates on ubuntu
+    tags: always    
     apt:
-      name: htop
+      update_cache: yes 
+    when: ansible_distribution == "Ubuntu"
+
+
+  - name: installling updates on Fedora
+    tags: always
+    dnf:
+      update_cache: yes
+      update_only: yes
+    when: ansible_distribution == "Fedora"
+
+  tasks:
+    - include: tasks/user.yml
+    - include: tasks/vim.yml
+    - include: tasks/wordpress.yml
+    - include: tasks/apache.yml
+    - include: tasks/service.yml
